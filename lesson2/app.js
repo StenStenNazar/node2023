@@ -40,7 +40,7 @@ app.put('/users/:userId', (req, res) => {
     const {id, name, age} = req.body;
     validator.validator(id, name, age);
 
-    const existId = users.some(user => user.id === +id)
+    const existId = users.some(user => user.id === +userId)
     if (existId) {
         throw new Error('id already exists')
     }
