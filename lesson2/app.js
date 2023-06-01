@@ -38,6 +38,7 @@ app.post('/users', (req, res) => {
 
 app.put('/users/:userId', (req, res) => {
     const {id, name, age} = req.body;
+    const {userId} = req.params;
     validator.validator(id, name, age);
 
     const existId = users.some(user => user.id === +userId)
@@ -45,7 +46,6 @@ app.put('/users/:userId', (req, res) => {
         throw new Error('id already exists')
     }
 
-    const {userId} = req.params;
     const index = users.findIndex(user => user.id === +userId);
     if (index !== -1) {
         users[index] = req.body;
