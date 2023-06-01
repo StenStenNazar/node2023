@@ -40,6 +40,11 @@ app.put('/users/:userId', (req, res) => {
     const {id, name, age} = req.body;
     validator.validator(id, name, age);
 
+    const existId = users.some(user => user.id === +id)
+    if (existId) {
+        throw new Error('id already exists')
+    }
+
     const {userId} = req.params;
     const index = users.findIndex(user => user.id === +userId);
     if (index !== -1) {
