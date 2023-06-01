@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const validator = (id, name, age) => {
+const validator = (id, name, age,existId) => {
     if (id <= 0 || typeof id !== 'number') {
         throw new Error('id:only numbers')
     }
@@ -11,6 +11,7 @@ const validator = (id, name, age) => {
     if (name.length <= 2 || name.length > 25) {
         throw new Error(' name: min char 2 , max char 25')
     }
+
 }
 
 const userWriterJson = (users) => {
